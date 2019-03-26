@@ -1,0 +1,17 @@
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 60px;
+    pointer-events: none;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .App-title {
+    color: #61dafb;
+    font-size: 1.0vmax;
+  }
