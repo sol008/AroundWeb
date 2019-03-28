@@ -30,7 +30,7 @@ class RegistrationForm extends React.Component {
        }).catch((e) => {
          message.error('Registration Failed');
          console.log(e);
-       })
+       });
      }
    });
  }
