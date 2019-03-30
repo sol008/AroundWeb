@@ -1,6 +1,6 @@
 import React from "react";
 import { Register } from "./Register";
-import { Link, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Login } from "./Login";
 import { Home } from "./Home";
 
@@ -24,13 +24,6 @@ export class Main extends React.Component {
           <Route path="/home" render={this.getHome} />
           <Route render={this.getLogin} />
         </Switch>
-
-        <Link to="/register">Register</Link>
-        <br />
-        <Link to="/login">Login</Link>
-        <br />
-        <Link to="/home">Home</Link>
-        <br />
       </div>
     );
   }
