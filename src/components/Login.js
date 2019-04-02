@@ -1,15 +1,15 @@
 import React from "react";
 import { Form, Icon, Input, Button, message } from "antd";
+import { Link } from "react-router-dom";
 import { API_ROOT } from "../constants";
-import {Link} from 'react-router-dom';
+
+const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
-
         fetch(`${API_ROOT}/login`, {
           method: "POST",
           body: JSON.stringify({
@@ -23,13 +23,13 @@ class NormalLoginForm extends React.Component {
             }
             throw new Error(response.statusText);
           })
-          .then((data) => {
-            message.success("Login Succeed");
+          .then(data => {
+            message.success("Login Success");
             this.props.handleLogin(data);
           })
           .catch(e => {
-            message.error("Login Failed");
             console.log(e);
+            message.error("Login Failed.");
           });
       }
     });
@@ -39,7 +39,7 @@ class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item>
+        <FormItem>
           {getFieldDecorator("username", {
             rules: [{ required: true, message: "Please input your username!" }]
           })(
@@ -48,8 +48,8 @@ class NormalLoginForm extends React.Component {
               placeholder="Username"
             />
           )}
-        </Form.Item>
-        <Form.Item>
+        </FormItem>
+        <FormItem>
           {getFieldDecorator("password", {
             rules: [{ required: true, message: "Please input your Password!" }]
           })(
@@ -59,8 +59,8 @@ class NormalLoginForm extends React.Component {
               placeholder="Password"
             />
           )}
-        </Form.Item>
-        <Form.Item>
+        </FormItem>
+        <FormItem>
           <Button
             type="primary"
             htmlType="submit"
@@ -68,11 +68,11 @@ class NormalLoginForm extends React.Component {
           >
             Log in
           </Button>
-          Or <Link to="/register">register now!</Link> 
-        </Form.Item>
+          Or <Link to="/register">register now!</Link>
+        </FormItem>
       </Form>
     );
   }
 }
 
-export const Login = Form.create({ name: "LoginForm" })(NormalLoginForm);
+export const Login = Form.create()(NormalLoginForm);
