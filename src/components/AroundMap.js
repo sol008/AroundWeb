@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import { AroundMarker } from "./AroundMarker";
 import { POS_KEY } from "../constants";
 
@@ -7,7 +7,11 @@ class NormalAroundMap extends React.Component {
   reloadMarkers = () => {
     const center = this.getCenter();
     const radius = this.getRadius();
-    this.props.loadNearbyPosts(center, radius);
+    if (this.props.topic === "around") {
+      this.props.loadNearbyPosts(center, radius);
+    } else {
+      this.props.loadFacesAroundTheWorld();
+    }
   };
 
   getCenter = () => {

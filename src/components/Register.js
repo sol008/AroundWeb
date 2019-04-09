@@ -134,7 +134,7 @@ class RegistrationForm extends React.Component {
             Register
           </Button>
           <p>
-            I already have an account, go back to <Link to="/Login">login</Link>
+            I already have an account, go back to <Link to="/login">login</Link>
           </p>
         </FormItem>
       </Form>

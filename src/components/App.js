@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { TopBar } from "./TopBar";
 import { Main } from "./Main";
-import {TOKEN_KEY} from "../constants";
+import { TOKEN_KEY } from "../constants";
 
 class App extends Component {
   state = {
-    isLoggedIn: !! localStorage.getItem(TOKEN_KEY)
+    isLoggedIn: Boolean(localStorage.getItem(TOKEN_KEY))
   };
 
-  handleLogin = (token) => {
-    this.setState({ isLoggedIn: true });
+  handleLogin = token => {
     localStorage.setItem(TOKEN_KEY, token);
+    this.setState({ isLoggedIn: true });
   };
 
   handleLogout = () => {
-    this.setState({ isLoggedIn: false });
     localStorage.removeItem(TOKEN_KEY);
+    this.setState({ isLoggedIn: false });
   };
 
   render() {
